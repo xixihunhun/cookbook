@@ -2,6 +2,7 @@ from flask import Blueprint, request
 from app import db
 from app.models import Recipe
 from app.utils.response import success, fail
+from app.utils.jwt_util import login_required
 import random
 
 recipe_bp = Blueprint("recipe", __name__)
@@ -21,8 +22,9 @@ def get_random_recipe():
     one = random.choice(recipe_list)
     return success(one.to_dict())
 
-# 3. 新增菜谱
+# 3. 新增菜谱（需登录）
 @recipe_bp.route("/add", methods=["POST"])
+@login_required
 def add_recipe():
     data = request.get_json()
     # 参数校验
@@ -46,8 +48,9 @@ def add_recipe():
     db.session.commit()
     return success(new_recipe.to_dict(), msg="菜谱新增成功")
 
-# 4. 编辑菜谱
+# 4. 编辑菜谱（需登录）
 @recipe_bp.route("/edit/<int:rid>", methods=["PUT"])
+@login_required
 def edit_recipe(rid):
     recipe = Recipe.query.get(rid)
     if not recipe:
@@ -65,8 +68,9 @@ def edit_recipe(rid):
     db.session.commit()
     return success(recipe.to_dict(), msg="修改成功")
 
-# 5. 删除菜谱
+# 5. 删除菜谱（需登录）
 @recipe_bp.route("/delete/<int:rid>", methods=["DELETE"])
+@login_required
 def delete_recipe(rid):
     recipe = Recipe.query.get(rid)
     if not recipe:
@@ -75,8 +79,9 @@ def delete_recipe(rid):
     db.session.commit()
     return success(msg="删除成功")
 
-# 6. 收藏 / 取消收藏
+# 6. 收藏 / 取消收藏（需登录）
 @recipe_bp.route("/collect/<int:rid>", methods=["POST"])
+@login_required
 def collect_recipe(rid):
     recipe = Recipe.query.get(rid)
     if not recipe:
@@ -86,8 +91,9 @@ def collect_recipe(rid):
     db.session.commit()
     return success(recipe.to_dict(), msg="操作成功")
 
-# 7. 获取所有收藏菜谱
+# 7. 获取所有收藏菜谱（需登录）
 @recipe_bp.route("/collect/list", methods=["GET"])
+@login_required
 def get_collect_list():
     collect_list = Recipe.query.filter_by(is_collect=True).all()
     return success([item.to_dict() for item in collect_list])

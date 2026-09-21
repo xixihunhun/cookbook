@@ -17,9 +17,11 @@ def create_app(env="dev"):
     migrate.init_app(app, db)
     CORS(app)
 
-    # 注册蓝图（后面写菜谱接口用，先预留）
-    from app.api.recipe import recipe_bp
+    # 注册蓝图
+    from app.api import recipe_bp, category_bp, user_bp
     app.register_blueprint(recipe_bp, url_prefix="/api/recipe")
+    app.register_blueprint(category_bp, url_prefix="/api/category")
+    app.register_blueprint(user_bp, url_prefix="/api/user")
 
     # 基础路由
     @app.route("/")
