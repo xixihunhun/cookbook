@@ -1,0 +1,163 @@
+/* ===== 淘宝闪购风格主题变量 ===== */
+$primary: #FF2D2D;          // 淘宝红
+$orange: #FF6A00;           // 闪购橙
+$yellow: #FFD700;           // 金币黄
+$bg-gradient: linear-gradient(135deg, #FF2D2D 0%, #FF6A00 100%);
+$card-shadow: 0 4px 16px rgba(255, 45, 45, 0.15);
+$border-radius: 16px;
+
+/* ===== 全局 ===== */
+page {
+  background-color: #FFF5F0;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
+  font-size: 28px;
+  color: #333333;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ===== 按钮 ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 32px;
+  border-radius: $border-radius;
+  font-size: 28px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.2s;
+
+  &:active { opacity: 0.85; }
+}
+.btn-primary {
+  background: $bg-gradient;
+  color: #fff;
+  box-shadow: $card-shadow;
+}
+.btn-orange {
+  background: linear-gradient(135deg, #FF6A00 0%, #FFD700 100%);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(255, 106, 0, 0.3);
+}
+.btn-secondary {
+  background: #fff;
+  color: $primary;
+  border: 2px solid $primary;
+}
+.btn-danger {
+  background: #fff;
+  color: #FF3B30;
+  border: 2px solid #FF3B30;
+}
+.btn-block {
+  width: 100%;
+  padding: 24px 32px;
+  font-size: 32px;
+}
+.btn-sm {
+  padding: 12px 24px;
+  font-size: 24px;
+}
+
+/* ===== 卡片 ===== */
+.card {
+  background: #fff;
+  border-radius: $border-radius;
+  padding: 28px;
+  margin: 20px 24px;
+  box-shadow: $card-shadow;
+}
+
+/* ===== 输入框 ===== */
+.input {
+  width: 100%;
+  padding: 20px 24px;
+  border: 2px solid #FFE0D6;
+  border-radius: $border-radius;
+  font-size: 28px;
+  background: #FFF9F5;
+  box-sizing: border-box;
+
+  &:focus { border-color: $primary; }
+}
+
+/* ===== 表单 ===== */
+.form-item { margin-bottom: 24px; }
+.form-label { display: block; font-size: 26px; color: #666; margin-bottom: 12px; }
+
+/* ===== 空状态 ===== */
+.empty {
+  text-align: center;
+  padding: 160px 40px;
+  color: #999;
+}
+.empty-icon { font-size: 80px; margin-bottom: 20px; }
+
+/* ===== 通用 ===== */
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.flex-wrap { flex-wrap: wrap; }
+
+/* ===== 闪购风格徽章 ===== */
+.badge-hot {
+  display: inline-block;
+  padding: 4px 16px;
+  background: linear-gradient(135deg, $primary, $orange);
+  color: #fff;
+  border-radius: 20px;
+  font-size: 22px;
+  font-weight: 600;
+}
+.badge-tag {
+  display: inline-block;
+  padding: 4px 14px;
+  background: #FFF0E6;
+  color: $primary;
+  border-radius: 16px;
+  font-size: 22px;
+  margin-right: 10px;
+}
+
+/* ===== 倒计时条 ===== */
+.countdown-bar {
+  background: linear-gradient(90deg, rgba(255, 45, 45, 0.9), rgba(255, 106, 0, 0.9));
+  color: #fff;
+  padding: 20px 28px;
+  border-radius: $border-radius;
+  margin: 0 24px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: $card-shadow;
+  font-size: 26px;
+
+  .countdown-num {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    margin: 0 4px;
+    font-weight: 700;
+    font-family: "Menlo", "Courier New", monospace;
+  }
+}
+
+/* ===== 分段 ===== */
+.section-title {
+  font-size: 34px;
+  font-weight: 700;
+  color: #222;
+  padding: 24px 28px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ===== 分隔 ===== */
+.divider {
+  height: 1px;
+  background: #FFE0D6;
+  margin: 16px 0;
+}
